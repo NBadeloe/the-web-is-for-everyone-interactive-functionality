@@ -1,0 +1,25 @@
+<%- include('partials/head') %>
+
+<form method="post" action="/" class="form-code">
+
+<label>Plant naam:<br/></label>
+ <input name="name" id="name" required autocomplete="send name" type="text">
+  
+ <label>Gifig:<br/></label>
+ <input name="giftig" id="giftig"  required autocomplete="send giftig" type="text">
+   
+ <label>Land van herkomst:<br/></label>
+ <input name="landvanherkomst" id="landvanherkomst" autocomplete="send landvanherkomst" type="text">
+   
+ <label>Verpotten:<br/></label>
+ <input name="verpotten" id="verpotten" autocomplete="send verpotten" type="text">
+   
+ <label>Voeding:<br/></label>
+ <input name="voeding" id="voeding" autocomplete="send voeding" type="text">
+   
+   
+  <p class="form-box"><button class="form-button"type="submit">Plaats stekje
+  </button></p>
+</form>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,36 @@
+<%- include('partials/head') %>
+
+<h1> weenie</h1>
+<section class="stek-grid"> 
+    <% stekjes.forEach((stekje) => { %>
+
+        <article class="card">
+            <% if (stekje.fotos[0]) { %>
+                <img src="<%=stekje.fotos[0].original %>" width="<%=stekje.fotos[0].width%>"
+                height="<%= stekje.fotos[0].heigth %>" alt="stekje <%= stekje.naam %>">
+            <% }else{ %>
+                <!-- anders een placeholder -->
+                <img src="assets/plant (1).png">
+            <% } %>
+            <h2><%= stekje.naam %></h2>
+        <section class="card-detail">
+            <p>
+                Niet giftig<br>
+                na 3 weken verpotten<br>
+                in de lente 1 keer voeden<br>
+                <%= stekje.giftig %> <br>
+                <%= stekje.verpotten %><br>
+                <%= stekje.voeding %><br>
+            </p>
+        </section>    
+            
+            
+            
+        </article>
+   
+
+    
+    
+    <% }); %>
+</section>
+<%- include('partials/footer') %>
