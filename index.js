@@ -1,7 +1,7 @@
 // importeer packages van uit node modules
-import express from "express";
-import fetch from "node-fetch";
-import { postJson } from "./helpers/fetchWrapper.js";
+const express = require("express");
+const fetch = require("node-fetch");
+// const postJson = require("./helpers/fetchWrapper.js");
 
 //start server met express
 const server = express();
@@ -9,6 +9,7 @@ const server = express();
 const url = "https://api.buurtcampus-oost.fdnd.nl/api/v1/";
 const query = "stekjes";
 //setup server poort
+
 const port = 2000;
 server.set(port);
 server.listen(port),
@@ -46,19 +47,41 @@ server.get("/", function (request, response) {
 server.get("/nieuw-stekje", (request, response) => {
   response.render("form.ejs");
 });
-
+  async function postJson(postUrl, body) {
+    return await fetch(postUrl, {
+      method: 'post',
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((response) => response.json())
+      .catch((error) => error)
+  }
 // Handel het versturen van het formulier af
 server.post("/nieuw-stekje", (request, response) => {
   // Roep de API aan met de post methode
   const postUrl = url + "stekjes";
 
+
   postJson(postUrl, request.body).then((data) => {
     console.log(data);
 
     if (data.success) {
-      response.redirect("/");
+      response.redirect("/"); 
     } else {
       console.log("oops");
     }
   });
+
+
+
 });
+
+async function postJson(postUrl, body) {
+      return await fetch(postUrl, {
+        method: 'post',
+        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then((response) => response.json())
+        .catch((error) => error)
+    }
